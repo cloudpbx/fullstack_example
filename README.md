@@ -15,6 +15,7 @@ Test your service locally, without having to deploy it first.
 ## Setup
 
 ```bash
+npm i -g serverless@2.72.3
 npm install
 serverless dynamodb install (or to use a persistent docker dynamodb instead, open a new terminal: cd ./dynamodb && docker-compose up -d)
 serverless offline start
