@@ -14,6 +14,8 @@ Test your service locally, without having to deploy it first.
 
 ## Setup
 
+Note: Your node version must be v15.4 or below, or POST requests will not work with serverless offline.
+
 ```bash
 npm i -g serverless@2.72.3
 npm install
