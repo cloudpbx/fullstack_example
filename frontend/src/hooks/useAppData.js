@@ -17,12 +17,6 @@ const reducer = (state, action) => {
 
 const languages = [
 	{ label: 'C#', link: 'https://cloud.google.com/dotnet/docs/setup'},
-	{ label: 'Go', link: 'https://cloud.google.com/go/docs/setup'},
-	{ label: 'Java', link: 'https://cloud.google.com/java/docs/setup'},
-	{ label: 'Node.js', link: 'https://cloud.google.com/nodejs/docs/setup'},
-	{ label: 'PHP', link: 'https://cloud.google.com/php/docs/setup'},
-	{ label: 'Python', link: 'https://cloud.google.com/python/docs/setup'},
-	{ label: 'Ruby', link: 'https://cloud.google.com/ruby/docs/setup'},
 ];
 
 /** Return App initial state */
