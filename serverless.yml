@@ -41,34 +41,34 @@ provider:
 
 functions:
   create:
-    handler: todos/create.create
+    handler: languages/create.create
     events:
       - http:
-          path: todos
+          path: languages
           method: post
           cors: true
 
   list:
-    handler: todos/list.list
+    handler: languages/list.list
     events:
       - http:
-          path: todos
+          path: languages
           method: get
           cors: true
 
   get:
-    handler: todos/get.get
+    handler: languages/get.get
     events:
       - http:
-          path: todos/{id}
+          path: languges/{id}
           method: get
           cors: true
 
   update:
-    handler: todos/update.update
+    handler: languages/update.update
     events:
       - http:
-          path: todos/{id}
+          path: languages/{id}
           method: put
           cors: true
 
