@@ -27,7 +27,7 @@ const FormDialog = (props) => {
 			<DialogTitle>New Language</DialogTitle>
 
 			<DialogContent sx={{ overflowX: 'hidden' }}>
-				{createField('name', 'Language')}
+				{createField('name', 'Name')}
 				{createField('description', 'Description')}
 				{createField('link', 'Link')}
 			</DialogContent>
