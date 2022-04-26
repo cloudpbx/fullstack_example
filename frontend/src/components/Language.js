@@ -10,7 +10,7 @@ const Language = (props) => {
   return (
     <div>
 			{languages.map((language, index) => {
-				const label = language['label'];
+				const label = language['name'];
 				const link = language['link'];
 
 				if (expanded === label) {
