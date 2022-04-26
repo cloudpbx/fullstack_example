@@ -10,6 +10,7 @@ const SET_LANGUAGES = 'SET_LANGUAGES';
 const SET_EXPANDED = 'SET_EXPANDED';
 const SET_OPEN = 'SET_OPEN';
 const SET_FIELDS = 'SET_FIELDS';
+const SET_ERROR = 'SET_ERROR';
 
 /** Reducer switch statements */
 const reducer = (state, action) => {
@@ -22,6 +23,8 @@ const reducer = (state, action) => {
 			return { ...state, open: action.value };
 		case SET_FIELDS:
 			return { ...state, fields: action.value };
+		case SET_ERROR:
+			return { ...state, error: action.value };
 		default:
 			throw new Error(`App::reducer::error - Invalid action type: ${action.type}`);
 	}
@@ -49,6 +52,7 @@ const initApp = () => {
 		expanded: '',
 		open: false,
 		fields: defaultFields,
+		error: '',
 	};
 };
 
@@ -60,6 +64,7 @@ const useAppData = () => {
 	const setExpanded = (expanded) => dispatch({ type: SET_EXPANDED, value: expanded });
 	const setOpen = (open) => dispatch({ type: SET_OPEN, value: open });
 	const setFields = (fields) => dispatch({ type: SET_FIELDS, value: fields });
+	const setError = (error) => dispatch({ type: SET_ERROR, value: error });
 
 	useEffect(() => {
 		update_languages_list(defaultLanguages[0]).then(data => {
@@ -82,15 +87,17 @@ const useAppData = () => {
 		setFields({ ...state.fields, [event.target.name]: event.target.value });
 	}
 
+	const handleErrorClose = () => setError('');
+
 	const saveLanguage = () => {
 		for (const attr in state.fields) {
 			if (stringAttr.includes(attr) && isEmptyString(state.fields[attr])) {
-				console.log(`Please fill in the '${attr}' field.`);
+				setError(`Please fill in the '${attr}' field.`);
 				return;
 			};
 		};
 		if (!isValidUrl(state.fields.link)) {
-			console.log('Please provide a valid link.');
+			setError('Please provide a valid link.');
 			return;
 		};
 		update_languages_list(state.fields).then(data => {
@@ -107,6 +114,7 @@ const useAppData = () => {
 		handleClose,
 		handleFieldsChange,
 		saveLanguage,
+		handleErrorClose,
 	}
 };
 

@@ -4,6 +4,7 @@ import Language from './components/Language';
 import useAppData from './hooks/useAppData';
 import AddButton from './components/AddButton';
 import FormDialog from './components/FormDialog';
+import ErrorSnackbar from './components/ErrorSnackBar';
 
 const StyledGridWrapper = styled(Grid)((props) => ({
 	margin: '0.5rem',
@@ -17,8 +18,8 @@ const StyledBoxContainer = styled(Box)((props) => ({
 }));
 
 function App() {
-	const { state, handleChange, handleOpen, handleClose, handleFieldsChange, saveLanguage } = useAppData();
-	const { languages, expanded, open, fields } = state;
+	const { state, handleChange, handleOpen, handleClose, handleFieldsChange, handleErrorClose, saveLanguage } = useAppData();
+	const { languages, expanded, open, fields, error } = state;
 
   return (
 		<StyledGridWrapper container direction='column'>
@@ -41,6 +42,7 @@ function App() {
 					saveLanguage={saveLanguage}
 				/>
 			</StyledBoxContainer>
+			<ErrorSnackbar error={error} onClose={handleErrorClose} />
 		</StyledGridWrapper>
   );
 }
