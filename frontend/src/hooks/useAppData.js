@@ -54,7 +54,10 @@ const useAppData = () => {
 
 	const handleOpen = () => setOpen(true);
 
-	const handleClose = () => setOpen(false);
+	const handleClose = () => {
+		setOpen(false);
+		setFields(defaultFields);
+	}
 
 	const handleFieldsChange = () => {
 		setFields({ ...state.fields, [event.target.name]: event.target.value });
