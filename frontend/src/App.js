@@ -3,6 +3,7 @@ import { Box, Grid, styled } from '@mui/material';
 import Language from './components/Language';
 import useAppData from './hooks/useAppData';
 import AddButton from './components/AddButton';
+import FormDialog from './components/FormDialog';
 
 const StyledGridWrapper = styled(Grid)((props) => ({
 	margin: '0.5rem',
@@ -16,8 +17,8 @@ const StyledBoxContainer = styled(Box)((props) => ({
 }));
 
 function App() {
-	const { state, languages, handleChange } = useAppData();
-	const { expanded } = state;
+	const { state, languages, handleChange, handleOpen, handleClose, } = useAppData();
+	const { expanded, open } = state;
 
 	console.log('languages', languages);
 
@@ -30,8 +31,14 @@ function App() {
 					handleChange={handleChange}
 					expanded={expanded}
 				/>
-				<AddButton />
+				<AddButton
+					onClickOpen={handleOpen}
+				/>
 
+				<FormDialog
+					open={open}
+					handleClose={handleClose}
+				/>
 			</StyledBoxContainer>
 		</StyledGridWrapper>
   );
