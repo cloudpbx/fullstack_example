@@ -1,5 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import { update_languages_list } from '../lib/Api';
+import { isEmptyString } from '../helpers/validationHelpers';
 import Language from '../classes/Language';
 
 /** Reducer accepts an action type and returns the current state, dispatch pair. */
@@ -26,11 +27,20 @@ const reducer = (state, action) => {
 	}
 };
 
+/** Some constants */
 const defaultLanguages = [
 	{ name: 'C#',
 	 	description: '',
 		link: 'https://cloud.google.com/dotnet/docs/setup'},
 ];
+
+const defaultFields = {
+	name: '',
+	description: '',
+	link:'',
+};
+
+const stringAttr = ['name', 'link'];
 
 /** Return App initial state */
 const initApp = () => {
@@ -65,7 +75,7 @@ const useAppData = () => {
 
 	const handleClose = () => {
 		setOpen(false);
-		setFields(new Language());
+		setFields(defaultFields);
 	}
 
 	const handleFieldsChange = () => {
@@ -73,8 +83,13 @@ const useAppData = () => {
 	}
 
 	const saveLanguage = () => {
-		const newLanguage = {...state.fields};
-		update_languages_list(newLanguage).then(data => {
+		for (const attr in state.fields) {
+			if (stringAttr.includes(attr) && isEmptyString(state.fields[attr])) {
+				console.log(`Please fill in the '${attr}' field.`);
+				return;
+			}
+		}
+		update_languages_list(state.fields).then(data => {
 			setLanguages([...state.languages, new Language(data)])
 			setOpen(false);
 			setFields(new Language());
