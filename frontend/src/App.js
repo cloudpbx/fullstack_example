@@ -22,7 +22,9 @@ function App() {
 		<StyledGridWrapper container direction='column'>
 			<StyledBoxContainer>
 
-			<LanguageAccordion />
+			<LanguageAccordion
+				languages={languages}
+			/>
 
 			</StyledBoxContainer>
 		</StyledGridWrapper>
