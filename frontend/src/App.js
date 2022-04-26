@@ -15,7 +15,9 @@ const StyledBoxContainer = styled(Box)((props) => ({
 }));
 
 function App() {
-	const { state, languages } = useAppData();
+	const { state, languages, handleChange } = useAppData();
+	const { expanded } = state;
+
 	console.log('languages', languages);
 
   return (
@@ -24,6 +26,8 @@ function App() {
 
 			<LanguageAccordion
 				languages={languages}
+				handleChange={handleChange}
+				expanded={expanded}
 			/>
 
 			</StyledBoxContainer>
