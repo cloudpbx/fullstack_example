@@ -27,13 +27,15 @@ const Language = (props) => {
 								{label}
 							</Typography>
 							<Typography sx={{ color: 'text.secondary' }}>
-								For more information see
+								For more information see {' '}
 								<a href={link} target="_blank" rel="noreferrer">{`Setting up a ${label} Development Environment`}</a>
 							</Typography>
 						</AccordionSummary>
 
 						<AccordionDetails>
-							{description ? description : 'Add a description ...'}
+							<Typography variant='body2' paragraph gutterBottom>
+								{description ? description : 'Add a description ...'}
+							</Typography>
 						</AccordionDetails>
 
 						<AccordionActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
