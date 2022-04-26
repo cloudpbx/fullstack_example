@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Grid, styled } from '@mui/material';
 import Language from './components/Language';
 import useAppData from './hooks/useAppData';
-import AddButton from './components/AddButton';
+import OpenButton from './components/OpenButton';
 import FormDialog from './components/FormDialog';
 import ErrorSnackbar from './components/ErrorSnackBar';
 
@@ -30,7 +30,7 @@ function App() {
 					handleChange={handleChange}
 					expanded={expanded}
 				/>
-				<AddButton
+				<OpenButton
 					onClickOpen={handleOpen}
 				/>
 
