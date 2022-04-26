@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Dialog, DialogContent, DialogActions, Grid, Input, Typography } from '@mui/material';
 
 const FormDialog = (props) => {
-	const { open, handleClose } = props;
+	const { open, handleClose, fields, handleFieldsChange } = props;
 
 	return (
 		<Dialog open={open} onClose={handleClose} fullWidth>
@@ -13,8 +13,9 @@ const FormDialog = (props) => {
 					<Typography variant="body1"><b>Language</b></Typography>
 					&nbsp;&nbsp;
 					<Input
-						name='language'
-						value={''}
+						name='name'
+						value={fields['name'] ? fields['name'] : ''}
+						onChange={handleFieldsChange}
 						fullWidth={true}
 					/>
 				</Grid>

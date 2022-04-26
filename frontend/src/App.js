@@ -17,8 +17,8 @@ const StyledBoxContainer = styled(Box)((props) => ({
 }));
 
 function App() {
-	const { state, languages, handleChange, handleOpen, handleClose, } = useAppData();
-	const { expanded, open } = state;
+	const { state, languages, handleChange, handleOpen, handleClose, handleFieldsChange } = useAppData();
+	const { expanded, open, fields } = state;
 
 	console.log('languages', languages);
 
@@ -38,6 +38,8 @@ function App() {
 				<FormDialog
 					open={open}
 					handleClose={handleClose}
+					fields={fields}
+					handleFieldsChange={handleFieldsChange}
 				/>
 			</StyledBoxContainer>
 		</StyledGridWrapper>
