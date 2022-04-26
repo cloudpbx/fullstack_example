@@ -32,14 +32,11 @@ const FormDialog = (props) => {
 				{createField('link', 'Link')}
 			</DialogContent>
 
-			<DialogActions sx={{ marginBottom: '1rem' }}>
+			<DialogActions sx={{ margin: '1rem' }}>
 				<Button variant="outlined" onClick={() => handleClose()}>
 					CANCEL
 				</Button>
-				<Button variant="outlined" autoFocus onClick={() => console.log('delete')}>
-					DELETE
-				</Button>
-				<Button variant="contained" color='primary' autoFocus onClick={saveLanguage}>
+				<Button variant="contained" color='primary' autoFocus onClick={saveLanguage} sx={{ marginLeft: '3%' }}>
 					ADD
 				</Button>
 			</DialogActions>
