@@ -17,10 +17,8 @@ const StyledBoxContainer = styled(Box)((props) => ({
 }));
 
 function App() {
-	const { state, languages, handleChange, handleOpen, handleClose, handleFieldsChange } = useAppData();
-	const { expanded, open, fields } = state;
-
-	console.log('languages', languages);
+	const { state, handleChange, handleOpen, handleClose, handleFieldsChange, saveLanguage } = useAppData();
+	const { languages, expanded, open, fields } = state;
 
   return (
 		<StyledGridWrapper container direction='column'>
@@ -40,6 +38,7 @@ function App() {
 					handleClose={handleClose}
 					fields={fields}
 					handleFieldsChange={handleFieldsChange}
+					saveLanguage={saveLanguage}
 				/>
 			</StyledBoxContainer>
 		</StyledGridWrapper>
