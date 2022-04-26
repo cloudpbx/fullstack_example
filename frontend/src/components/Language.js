@@ -4,7 +4,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
-const LanguageAccordion = (props) => {
+const Language = (props) => {
 	const { languages, handleChange, expanded } = props;
 
   return (
@@ -64,4 +64,4 @@ const LanguageAccordion = (props) => {
   );
 }
 
-export default LanguageAccordion;
+export default Language;

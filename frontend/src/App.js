@@ -1,7 +1,8 @@
 import React from 'react';
 import { Box, Grid, styled } from '@mui/material';
-import LanguageAccordion from './components/LanguageAccordion';
+import Language from './components/Language';
 import useAppData from './hooks/useAppData';
+import AddButton from './components/AddButton';
 
 const StyledGridWrapper = styled(Grid)((props) => ({
 	margin: '0.5rem',
@@ -24,11 +25,12 @@ function App() {
 		<StyledGridWrapper container direction='column'>
 			<StyledBoxContainer>
 
-			<LanguageAccordion
-				languages={languages}
-				handleChange={handleChange}
-				expanded={expanded}
-			/>
+				<Language
+					languages={languages}
+					handleChange={handleChange}
+					expanded={expanded}
+				/>
+				<AddButton />
 
 			</StyledBoxContainer>
 		</StyledGridWrapper>
