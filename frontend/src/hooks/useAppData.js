@@ -48,7 +48,7 @@ const initApp = () => {
 		languages: [],
 		expanded: '',
 		open: false,
-		fields: new Language(),
+		fields: defaultFields,
 	};
 };
 
@@ -96,7 +96,7 @@ const useAppData = () => {
 		update_languages_list(state.fields).then(data => {
 			setLanguages([...state.languages, new Language(data)])
 			setOpen(false);
-			setFields(new Language());
+			setFields(defaultFields);
 		}).catch(err => console.log('update_language_list::err - ', err));
 	}
 
