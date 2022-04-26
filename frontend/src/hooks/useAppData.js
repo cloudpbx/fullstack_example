@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react';
 import { update_languages_list } from '../lib/Api';
-import { isEmptyString } from '../helpers/validationHelpers';
+import { isEmptyString, isValidUrl } from '../helpers/validationHelpers';
 import Language from '../classes/Language';
 
 /** Reducer accepts an action type and returns the current state, dispatch pair. */
@@ -87,8 +87,12 @@ const useAppData = () => {
 			if (stringAttr.includes(attr) && isEmptyString(state.fields[attr])) {
 				console.log(`Please fill in the '${attr}' field.`);
 				return;
-			}
-		}
+			};
+		};
+		if (!isValidUrl(state.fields.link)) {
+			console.log('Please provide a valid link.');
+			return;
+		};
 		update_languages_list(state.fields).then(data => {
 			setLanguages([...state.languages, new Language(data)])
 			setOpen(false);
