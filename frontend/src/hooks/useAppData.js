@@ -51,7 +51,11 @@ const useAppData = () => {
 	const setOpen = (open) => dispatch({ type: SET_OPEN, value: open });
 	const setFields = (fields) => dispatch({ type: SET_FIELDS, value: fields });
 
-	useEffect(() => setLanguages(defaultLanguages), []);
+	useEffect(() => {
+		update_languages_list(defaultLanguages[0]).then(data => {
+			setLanguages([new Language(data)]);
+		}).catch(err => console.log('update_language_list::err - ', err));
+	}, []);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -72,7 +76,6 @@ const useAppData = () => {
 		const newLanguage = {...state.fields};
 		update_languages_list(newLanguage).then(data => {
 			setLanguages([...state.languages, new Language(data)])
-			console.log('data', data);
 			setOpen(false);
 			setFields(new Language());
 		}).catch(err => console.log('update_language_list::err - ', err));
