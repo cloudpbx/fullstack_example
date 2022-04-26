@@ -2,13 +2,13 @@ import React from 'react';
 import { Button, Dialog, DialogContent, DialogActions, Grid, Input, Typography, DialogTitle } from '@mui/material';
 
 const FormDialog = (props) => {
-	const { open, handleClose, fields, handleFieldsChange } = props;
+	const { open, handleClose, fields, handleFieldsChange, saveLanguage } = props;
 
 	const createField = (name, label) => {
 		const value = fields[name];
 			return (
 				<React.Fragment>
-					<Grid container direction="row" alignContent="center" sx={{ margin: 0, marginTop: '5%' }}>
+					<Grid container direction="row" alignContent="center" sx={{ margin: 0, marginTop: '3%' }}>
 						<Typography variant="body1"><b>{label}</b></Typography>
 						&nbsp;&nbsp;
 					</Grid>
@@ -39,7 +39,7 @@ const FormDialog = (props) => {
 				<Button variant="outlined" autoFocus onClick={() => console.log('delete')}>
 					DELETE
 				</Button>
-				<Button variant="contained" color='primary' autoFocus onClick={() => console.log('Add')}>
+				<Button variant="contained" color='primary' autoFocus onClick={saveLanguage}>
 					ADD
 				</Button>
 			</DialogActions>
