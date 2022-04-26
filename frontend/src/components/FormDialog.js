@@ -41,7 +41,7 @@ const FormDialog = (props) => {
 				</Button>
 			</DialogActions>
 		</Dialog>
-	)
-}
+	);
+};
 
 export default FormDialog;

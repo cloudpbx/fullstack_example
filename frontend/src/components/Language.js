@@ -27,8 +27,8 @@ const Language = (props) => {
 								{label}
 							</Typography>
 							<Typography sx={{ color: 'text.secondary' }}>
-									For more information see
-									<a href={link} target="_blank" rel="noreferrer">{`Setting up a ${label} Development Environment`}</a>
+								For more information see
+								<a href={link} target="_blank" rel="noreferrer">{`Setting up a ${label} Development Environment`}</a>
 							</Typography>
 						</AccordionSummary>
 
