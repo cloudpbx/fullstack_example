@@ -1,29 +1,39 @@
 import React from 'react';
-import { Button, Dialog, DialogContent, DialogActions, Grid, Input, Typography } from '@mui/material';
+import { Button, Dialog, DialogContent, DialogActions, Grid, Input, Typography, DialogTitle } from '@mui/material';
 
 const FormDialog = (props) => {
 	const { open, handleClose, fields, handleFieldsChange } = props;
 
-	return (
-		<Dialog open={open} onClose={handleClose} fullWidth>
-
-			<DialogContent sx={{ overflowX: 'hidden' }}>
-
-				<Grid container direction="row" alignContent="center" style={{ margin: 0 }}>
-					<Typography variant="body1"><b>Language</b></Typography>
-					&nbsp;&nbsp;
+	const createField = (name, label) => {
+		const value = fields[name];
+			return (
+				<React.Fragment>
+					<Grid container direction="row" alignContent="center" sx={{ margin: 0, marginTop: '5%' }}>
+						<Typography variant="body1"><b>{label}</b></Typography>
+						&nbsp;&nbsp;
+					</Grid>
 					<Input
-						name='name'
-						value={fields['name'] ? fields['name'] : ''}
+						name={name}
 						onChange={handleFieldsChange}
+						value={value ? value : ''}
 						fullWidth={true}
 					/>
-				</Grid>
+				</React.Fragment>
+		);
+	};
 
+	return (
+		<Dialog open={open} onClose={() => handleClose()} fullWidth>
+			<DialogTitle>New Language</DialogTitle>
+
+			<DialogContent sx={{ overflowX: 'hidden' }}>
+				{createField('name', 'Language')}
+				{createField('description', 'Description')}
+				{createField('link', 'Link')}
 			</DialogContent>
 
 			<DialogActions sx={{ marginBottom: '1rem' }}>
-				<Button variant="outlined" onClick={handleClose}>
+				<Button variant="outlined" onClick={() => handleClose()}>
 					CANCEL
 				</Button>
 				<Button variant="outlined" autoFocus onClick={() => console.log('delete')}>
