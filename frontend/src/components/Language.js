@@ -3,7 +3,7 @@ import { Accordion, AccordionSummary, AccordionDetails, AccordionActions, Button
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Language = (props) => {
-	const { languages, handleChange, expanded } = props;
+	const { languages, handleChange, expanded, handleLanguageClick } = props;
 
   return (
     <div>
@@ -42,7 +42,7 @@ const Language = (props) => {
 							<Button variant="outlined" color='error' onClick={() => console.log('delete')}>
 								DELETE
 							</Button>
-							<Button variant="contained" color='secondary' autoFocus onClick={() => console.log('edit')}>
+							<Button variant="contained" color='secondary' autoFocus onClick={(e) => handleLanguageClick(e, language)}>
 								EDIT
 							</Button>
 						</AccordionActions>

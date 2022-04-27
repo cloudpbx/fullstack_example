@@ -18,8 +18,8 @@ const StyledBoxContainer = styled(Box)((props) => ({
 }));
 
 function App() {
-	const { state, handleChange, handleOpen, handleClose, handleFieldsChange, handleErrorClose, saveLanguage } = useAppData();
-	const { languages, expanded, open, fields, error } = state;
+	const { state, handleChange, handleOpen, handleClose, handleFieldsChange, handleErrorClose, saveLanguage, handleLanguageClick } = useAppData();
+	const { languages, expanded, open, fields, error, addNew } = state;
 
   return (
 		<StyledGridWrapper container direction='column'>
@@ -29,6 +29,7 @@ function App() {
 					languages={languages}
 					handleChange={handleChange}
 					expanded={expanded}
+					handleLanguageClick={handleLanguageClick}
 				/>
 				<OpenButton
 					onClickOpen={handleOpen}
@@ -40,6 +41,7 @@ function App() {
 					fields={fields}
 					handleFieldsChange={handleFieldsChange}
 					saveLanguage={saveLanguage}
+					addNew={addNew}
 				/>
 			</StyledBoxContainer>
 			<ErrorSnackbar error={error} onClose={handleErrorClose} />
