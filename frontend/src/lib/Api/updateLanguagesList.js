@@ -2,7 +2,7 @@ import axios from 'axios';
 import { baseUrl } from '../config';
 
 /**
- * Update language list.
+ * Add language to Language table in DynamoDB.
  *
  * @param {Object} language
  * @return {Promise<any>}
@@ -15,7 +15,7 @@ const updateLanguagesList = (language) => {
 			headers: { 'Content-Type': 'application/json' }
 		};
 		axios
-			.post(`${baseUrl}languages`, params, reqBody)
+			.post(`${baseUrl}/languages`, params, reqBody)
 			.then(res => resolve(res.data))
 			.catch(err => reject(JSON.stringify(err)));
 	})
