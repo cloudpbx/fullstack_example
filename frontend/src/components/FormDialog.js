@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, Dialog, DialogContent, DialogActions, Grid, Input, Typography, DialogTitle } from '@mui/material';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Grid, Input, Typography } from '@mui/material';
 
 const FormDialog = (props) => {
-	const { open, handleClose, fields, handleFieldsChange, saveLanguage } = props;
+	const { open, handleClose, fields, handleFieldsChange, saveLanguage, addNew } = props;
 
 	const createField = (name, label) => {
 		const value = fields[name];
@@ -14,9 +14,11 @@ const FormDialog = (props) => {
 					</Grid>
 					<Input
 						name={name}
-						onChange={handleFieldsChange}
+						onChange={(e) => handleFieldsChange(e)}
 						value={value ? value : ''}
 						fullWidth={true}
+						rows={4}
+						multiline={name === 'description'}
 					/>
 				</React.Fragment>
 		);
@@ -24,7 +26,7 @@ const FormDialog = (props) => {
 
 	return (
 		<Dialog open={open} onClose={() => handleClose()} fullWidth>
-			<DialogTitle>New Language</DialogTitle>
+			<DialogTitle>{addNew ? 'New' : 'Edit' } Language</DialogTitle>
 
 			<DialogContent sx={{ overflowX: 'hidden' }}>
 				{createField('name', 'Name')}
@@ -37,7 +39,7 @@ const FormDialog = (props) => {
 					CANCEL
 				</Button>
 				<Button variant="contained" color='primary' autoFocus onClick={saveLanguage} sx={{ marginLeft: '3%' }}>
-					ADD
+					{addNew ? 'SAVE' : 'EDIT'}
 				</Button>
 			</DialogActions>
 		</Dialog>
