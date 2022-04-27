@@ -7,14 +7,15 @@ export const get: Handler = async (event: APIGatewayEvent, context: Context) => 
     TableName: process.env.DYNAMODB_TABLE as string,
     Key: {
       id: event.pathParameters!.id,
+			AttributesToGet: ["id", "name", "description", "link"],
     },
   };
 
-  // fetch todo from the database
+  // fetch languages from the database
   try {
     const res = await dynamoDb.get(params).promise()
     return successResponse(res.Item)
   } catch (error) {
-    return errorResponse(error.statusCode || 501, `Couldn't fetch the todo item`)
-  }
+    return errorResponse(error.statusCode || 501, `Couldn't fetch the language item`);
+  };
 };

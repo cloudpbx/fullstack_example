@@ -2,11 +2,10 @@ import { Handler, APIGatewayEvent, Context } from 'aws-lambda'
 import { dynamoDb } from '../util/dynamoHelper'
 import { errorResponse, successResponse } from '../util/responseHelper';
 
-const params = {
-  TableName: process.env.DYNAMODB_TABLE as string,
-};
-
 export const list: Handler = async (event: APIGatewayEvent, context: Context) => {
+	const params = {
+		TableName: process.env.DYNAMODB_TABLE as string,
+	}
   // fetch all todos from the database
   // For production workloads you should design your tables and indexes so that your applications can use Query instead of Scan.
   try {

@@ -41,7 +41,8 @@ provider:
 
 functions:
   create:
-    handler: languages/create.create
+    handler: api/create.create
+    description: Create language information.
     events:
       - http:
           path: languages
@@ -49,7 +50,8 @@ functions:
           cors: true
 
   list:
-    handler: languages/list.list
+    handler: api/list.list
+    description: List all languages.
     events:
       - http:
           path: languages
@@ -57,7 +59,8 @@ functions:
           cors: true
 
   get:
-    handler: languages/get.get
+    handler: api/get.get
+    description: Retrieve an existing language. You need to supply the unique ID for the language.
     events:
       - http:
           path: languges/{id}
@@ -65,7 +68,8 @@ functions:
           cors: true
 
   update:
-    handler: languages/update.update
+    handler: api/update.update
+    description: Update a specific language with the attributes that you pass in.
     events:
       - http:
           path: languages/{id}
