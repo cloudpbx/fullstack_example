@@ -63,7 +63,7 @@ functions:
     description: Retrieve an existing language. You need to supply the unique ID for the language.
     events:
       - http:
-          path: languges/{id}
+          path: languages/{id}
           method: get
           cors: true
 
