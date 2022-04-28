@@ -73,15 +73,18 @@ const useAppData = () => {
 	const setError = (error) => dispatch({ type: SET_ERROR, value: error });
 	const setAddNew = (addNew) => dispatch({ type: SET_ADD_NEW, value: addNew });
 
+	const languageNamesList = state.languages.map(language => language.name.toLowerCase());
 
 	useEffect(() => {
 		get_languages_list().then(data => {
 			console.log('data', data);
 			setLanguages(data);
+			if (!data.length) {
+				update_languages_list(defaultLanguages[0]).then(data => {
+					setLanguages([new Language(data)]);
+				}).catch(err => console.log('update_language_list::err - ', err));
+			}
 		}).catch(err => console.log('get_language_list::err - ', err));
-		// update_languages_list(defaultLanguages[0]).then(data => {
-		// 	setLanguages([new Language(data)]);
-		// }).catch(err => console.log('update_language_list::err - ', err));
 	}, []);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -117,6 +120,10 @@ const useAppData = () => {
 				return;
 			};
 		};
+		if (languageNamesList.indexOf(state.fields.name.toLowerCase()) !== -1) {
+			setError('The language name is already taken. Please choose another one.');
+			return;
+		}
 		if (!isValidUrl(state.fields.link)) {
 			setError('Please provide a valid link.');
 			return;
@@ -149,6 +156,7 @@ const useAppData = () => {
 
 	return {
 		state,
+		languageNamesList,
 		handleChange,
 		handleOpen,
 		handleClose,

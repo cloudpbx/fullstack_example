@@ -19,6 +19,7 @@ const StyledBoxContainer = styled(Box)((props) => ({
 
 function App() {
 	const { state,
+					languageNamesList,
 			    handleChange,
 					handleOpen,
 					handleClose,
@@ -48,7 +49,6 @@ function App() {
 				<OpenButton
 					onClickOpen={handleOpen}
 				/>
-
 				<FormDialog
 					open={open}
 					handleClose={handleClose}
@@ -56,6 +56,7 @@ function App() {
 					handleFieldsChange={handleFieldsChange}
 					saveLanguage={saveLanguage}
 					addNew={addNew}
+					namesList={languageNamesList}
 				/>
 			</StyledBoxContainer>
 			<ErrorSnackbar error={error} onClose={handleErrorClose} />

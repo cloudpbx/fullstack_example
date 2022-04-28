@@ -1,18 +1,22 @@
 import React from 'react';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Grid, Input, Typography } from '@mui/material';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Grid, TextField, Typography } from '@mui/material';
 
 const FormDialog = (props) => {
-	const { open, handleClose, fields, handleFieldsChange, saveLanguage, addNew } = props;
+	const { open, handleClose, fields, handleFieldsChange, saveLanguage, addNew, namesList } = props;
 
 	const createField = (name, label) => {
 		const value = fields[name];
+		const error = (name === 'name') && (namesList.indexOf(value.toLowerCase()) !== -1);
+		const text = 'The language name is already taken. Please choose another one.';
 			return (
 				<React.Fragment>
 					<Grid container direction="row" alignContent="center" sx={{ margin: 0, marginTop: '3%' }}>
 						<Typography variant="body1"><b>{label}</b></Typography>
 						&nbsp;&nbsp;
 					</Grid>
-					<Input
+					<TextField
+						error={error}
+						helperText={error && text}
 						name={name}
 						onChange={(e) => handleFieldsChange(e)}
 						value={value ? value : ''}
