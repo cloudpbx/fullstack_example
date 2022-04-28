@@ -34,6 +34,6 @@ export const create: Handler = async (event: APIGatewayEvent, context: Context) 
     return successResponse(params.Item)
   } catch (error) {
     console.error(error)
-    return errorResponse(400, 'Couldn\'t create the todo item.')
+    return errorResponse(400, 'Couldn\'t create the language item.')
   }
 }

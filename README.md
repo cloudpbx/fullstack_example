@@ -34,50 +34,50 @@ serverless offline start
 
 You can create, retrieve, update, or delete todos with the following commands:
 
-### Create a Todo
+### Create a Language
 
 ```bash
-curl -X POST -H "Content-Type:application/json" http://localhost:3000/dev/todos --data '{ "text": "Learn Serverless" }'
+curl -X POST -H "Content-Type:application/json" http://localhost:3000/dev/languages --data '{ "name": "Javascript", "description": "Learn JS", "link": "https://en.wikipedia.org/wiki/JavaScript" }'
 ```
 
 Example Result:
 ```bash
-{"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":false,"updatedAt":1479138570824}%
+{"id":"4c3523e0-c67f-11ec-9fe9-8d91c0387302","name":"Javascript","description":"Learn JS","link":"www.google.com","createdAt":1651101058333,"updatedAt":1651101058333}
 ```
 
 ### List all Todos
 
 ```bash
-curl -H "Content-Type:application/json" http://localhost:3000/dev/todos
+curl -H "Content-Type:application/json" http://localhost:3000/dev/languages
 ```
 
 Example output:
 ```bash
-[{"text":"Deploy my first service","id":"ac90feaa11e6-9ede-afdfa051af86","checked":true,"updatedAt":1479139961304},{"text":"Learn Serverless","id":"206793aa11e6-9ede-afdfa051af86","createdAt":1479139943241,"checked":false,"updatedAt":1479139943241}]%
+[{"id":"4c3523e0-c67f-11ec-9fe9-8d91c0387302","name":"Javascript","description":"Learn JS","link":"https://en.wikipedia.org/wiki/JavaScript","createdAt":1651101058333,"updatedAt":151101058333}]%
 ```
 
 ### Get one Todo
 
 ```bash
-# Replace the <id> part with a real id from your todos table
-curl -H "Content-Type:application/json" http://localhost:3000/dev/todos/<id>
+# Replace the <id> part with a real id from your languages table
+curl -H "Content-Type:application/json" http://localhost:3000/dev/languages/<id>
 ```
 
 Example Result:
 ```bash
-{"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":false,"updatedAt":1479138570824}%
+[{"id":"4c3523e0-c67f-11ec-9fe9-8d91c0387302","name":"Javascript","description":"Learn JS","link":"https://en.wikipedia.org/wiki/JavaScript","createdAt":1651101058333,"updatedAt":14551101058333}]%
 ```
 
 ### Update a Todo
 
 ```bash
 # Replace the <id> part with a real id from your todos table
-curl -X PUT -H "Content-Type:application/json" http://localhost:3000/dev/todos/<id> --data '{ "text": "Learn Serverless", "checked": true }'
+curl -X PUT -H "Content-Type:application/json" http://localhost:3000/dev/languages/<id> --data '{ "name": "Typescript", "description": "Learn JS", "link": "https://www.typescriptlang.org" }'
 ```
 
 Example Result:
 ```bash
-{"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":true,"updatedAt":1479138570824}%
+[{"id":"4c3523e0-c67f-11ec-9fe9-8d91c0387302","name":"Typescript","description":"Learn JS","link":"https://www.typescriptlang.org","createdAt":1651101058333,"updatedAt":1651101099333}]%
 ```
 
 No output

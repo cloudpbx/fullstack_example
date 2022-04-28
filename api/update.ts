@@ -13,7 +13,7 @@ export const update: Handler = async (event: APIGatewayEvent, context: Context) 
   // validation
   if (typeof name !== 'string' || typeof description !== 'string' || typeof link !== 'string') {
     console.error('Validation Failed');
-    return errorResponse(400, `Couldn't update the language item`);
+    return errorResponse(400, `Couldn't update the language item because of validation errors`);
   }
 
 	const params = {
@@ -39,6 +39,6 @@ export const update: Handler = async (event: APIGatewayEvent, context: Context) 
     const res = await dynamoDb.update(params).promise();
     return successResponse(res.Attributes);
   } catch (error) {
-    return errorResponse(error.statusCode || 501, `Couldn't fetch the todo item`);
+    return errorResponse(error.statusCode || 501, `Couldn't update the language item`);
   }
 };
