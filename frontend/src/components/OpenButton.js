@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Grid } from '@mui/material';
 
-const AddButton = (props) => {
-	const { onClickOpen, } = props;
+const OpenButton = (props) => {
+	const { text, onClick, } = props;
 
 	return (
 		<Grid
@@ -13,12 +14,17 @@ const AddButton = (props) => {
 			<Button
 				variant='contained'
 				disableElevation
-				onClick={onClickOpen}
+				onClick={onClick}
 			>
-				Add New Language
+				{text}
 			</Button>
 		</Grid>
 	);
 };
 
-export default AddButton;
+OpenButton.propTypes = {
+	text: PropTypes.string,
+	onClick: PropTypes.func.isRequired
+};
+
+export default OpenButton;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button,
 				 Dialog,
 				 DialogTitle,
@@ -72,6 +73,20 @@ const FormDialog = (props) => {
 			</DialogActions>
 		</Dialog>
 	);
+};
+
+FormDialog.propTypes = {
+	open: PropTypes.bool.isRequired,
+	handleClose: PropTypes.func.isRequired,
+	fields: PropTypes.shape({
+		name: PropTypes.string.isRequired,
+		description: PropTypes.string.isRequired,
+		link: PropTypes.string.isRequired,
+	}).isRequired,
+	handleFieldsChange: PropTypes.func.isRequired,
+	saveLanguage: PropTypes.func.isRequired,
+	addNew: PropTypes.bool.isRequired,
+	namesList: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default FormDialog;

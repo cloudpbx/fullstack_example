@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Accordion,
 				 AccordionSummary,
 				 AccordionDetails,
@@ -60,6 +61,14 @@ const Language = (props) => {
 			})}
     </div>
   );
+};
+
+Language.propTypes = {
+	languages: PropTypes.arrayOf(PropTypes.object).isRequired,
+	handleChange: PropTypes.func.isRequired,
+	expanded: PropTypes.string.isRequired,
+	handleLanguageClick: PropTypes.func.isRequired,
+	removeLanguage: PropTypes.func.isRequired,
 };
 
 export default Language;

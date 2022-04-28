@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Snackbar, Typography, Alert } from '@mui/material';
 
 function ErrorSnackbar(props) {
@@ -16,5 +17,10 @@ function ErrorSnackbar(props) {
 		</Snackbar>
 	);
 }
+
+ErrorSnackbar.propTypes = {
+	error: PropTypes.string.isRequired,
+	onClose: PropTypes.func.isRequired
+};
 
 export default ErrorSnackbar;

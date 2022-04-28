@@ -47,7 +47,8 @@ function App() {
 					removeLanguage={removeLanguage}
 				/>
 				<OpenButton
-					onClickOpen={handleOpen}
+				 	text='Add New Language'
+					onClick={handleOpen}
 				/>
 				<FormDialog
 					open={open}
