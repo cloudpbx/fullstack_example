@@ -1,9 +1,18 @@
 import React from 'react';
-import { Accordion, AccordionSummary, AccordionDetails, AccordionActions, Button, Typography } from '@mui/material';
+import { Accordion,
+				 AccordionSummary,
+				 AccordionDetails,
+				 AccordionActions,
+				 Button,
+				 Typography, } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Language = (props) => {
-	const { languages, handleChange, expanded, handleLanguageClick } = props;
+	const { languages,
+					handleChange,
+					expanded,
+					handleLanguageClick,
+					removeLanguage } = props;
 
   return (
     <div>
@@ -39,7 +48,7 @@ const Language = (props) => {
 						</AccordionDetails>
 
 						<AccordionActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-							<Button variant="outlined" color='error' onClick={() => console.log('delete')}>
+							<Button variant="outlined" color='error' onClick={(e,) => removeLanguage(e, language, index)}>
 								DELETE
 							</Button>
 							<Button variant="contained" color='secondary' autoFocus onClick={(e) => handleLanguageClick(e, language)}>

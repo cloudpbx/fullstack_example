@@ -76,6 +76,15 @@ functions:
           method: put
           cors: true
 
+  remove:
+    handler: api/remove.remove
+    description: Remove a language item with the partition key id.
+    events:
+      - http:
+          path: languages/{id}
+          method: delete
+          cors: true
+
 resources:
   Resources:
     TodosDynamoDbTable:

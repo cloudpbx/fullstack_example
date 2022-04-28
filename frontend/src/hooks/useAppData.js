@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react';
-import { get_languages_list, update_language, update_languages_list } from '../lib/Api';
+import { get_languages_list, remove_language, update_language, update_languages_list } from '../lib/Api';
 import { isEmptyString, isValidUrl } from '../helpers/validationHelpers';
 import Language from '../classes/Language';
 
@@ -79,9 +79,9 @@ const useAppData = () => {
 			console.log('data', data);
 			setLanguages(data);
 		}).catch(err => console.log('get_language_list::err - ', err));
-	// 	update_languages_list(defaultLanguages[0]).then(data => {
-	// 		setLanguages([new Language(data)]);
-	// 	}).catch(err => console.log('update_language_list::err - ', err));
+		// update_languages_list(defaultLanguages[0]).then(data => {
+		// 	setLanguages([new Language(data)]);
+		// }).catch(err => console.log('update_language_list::err - ', err));
 	}, []);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -138,15 +138,25 @@ const useAppData = () => {
 		};
 	};
 
+	const removeLanguage = (e, language, index) => {
+		remove_language(language.id).then((data) => {
+			let newLanguages = [...state.languages];
+			newLanguages.splice(index, 1);
+			setExpanded('');
+			setLanguages(newLanguages);
+		}).catch(err => console.log('remove_language::err - ', err));
+	}
+
 	return {
 		state,
 		handleChange,
 		handleOpen,
 		handleClose,
 		handleFieldsChange,
-		saveLanguage,
 		handleErrorClose,
 		handleLanguageClick,
+		saveLanguage,
+		removeLanguage,
 	};
 };
 
