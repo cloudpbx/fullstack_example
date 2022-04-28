@@ -87,7 +87,7 @@ functions:
 
 resources:
   Resources:
-    TodosDynamoDbTable:
+    LanguagesDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain
       Properties:
