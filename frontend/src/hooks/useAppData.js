@@ -110,20 +110,21 @@ const useAppData = () => {
 
 	const handleLanguageClick = (e, item) => {
 		setFields(item);
+		setAddNew(false);
 		setOpen(true);
 	};
 
 	const saveLanguage = () => {
+		if (state.addNew && languageNamesList.indexOf(state.fields.name.toLowerCase()) !== -1) {
+			setError('The language name is already taken. Please choose another one.');
+			return;
+		}
 		for (const attr in state.fields) {
 			if (stringAttr.includes(attr) && isEmptyString(state.fields[attr])) {
 				setError(`Please fill in the '${attr}' field.`);
 				return;
 			};
 		};
-		if (languageNamesList.indexOf(state.fields.name.toLowerCase()) !== -1) {
-			setError('The language name is already taken. Please choose another one.');
-			return;
-		}
 		if (!isValidUrl(state.fields.link)) {
 			setError('Please provide a valid link.');
 			return;

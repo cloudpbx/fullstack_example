@@ -6,7 +6,7 @@ const FormDialog = (props) => {
 
 	const createField = (name, label) => {
 		const value = fields[name];
-		const error = (name === 'name') && (namesList.indexOf(value.toLowerCase()) !== -1);
+		const error = (name === 'name') && addNew && (namesList.indexOf(value.toLowerCase()) !== -1);
 		const text = 'The language name is already taken. Please choose another one.';
 			return (
 				<React.Fragment>
@@ -16,6 +16,7 @@ const FormDialog = (props) => {
 					</Grid>
 					<TextField
 						error={error}
+						disabled={name === 'name' && !addNew}
 						helperText={error && text}
 						name={name}
 						onChange={(e) => handleFieldsChange(e)}
