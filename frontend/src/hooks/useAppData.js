@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react';
-import { update_language, update_languages_list } from '../lib/Api';
+import { get_languages_list, update_language, update_languages_list } from '../lib/Api';
 import { isEmptyString, isValidUrl } from '../helpers/validationHelpers';
 import Language from '../classes/Language';
 
@@ -48,7 +48,7 @@ const defaultFields = {
 	link:'',
 };
 
-const stringAttr = ['name', 'link'];
+const stringAttr = ['name', 'description', 'link'];
 
 /** Return App initial state */
 const initApp = () => {
@@ -73,23 +73,28 @@ const useAppData = () => {
 	const setError = (error) => dispatch({ type: SET_ERROR, value: error });
 	const setAddNew = (addNew) => dispatch({ type: SET_ADD_NEW, value: addNew });
 
-	// useEffect(() => {
+
+	useEffect(() => {
+		get_languages_list().then(data => {
+			console.log('data', data);
+			setLanguages(data);
+		}).catch(err => console.log('get_language_list::err - ', err));
 	// 	update_languages_list(defaultLanguages[0]).then(data => {
 	// 		setLanguages([new Language(data)]);
 	// 	}).catch(err => console.log('update_language_list::err - ', err));
-	// }, []);
+	}, []);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
 
 	const handleOpen = () => {
-		setAddNew(true);
+		setExpanded('');
 		setOpen(true);
+		setAddNew(true);
 	};
 
 	const handleClose = () => {
-		setAddNew(false);
 		setOpen(false);
 		setFields(defaultFields);
 	};
