@@ -8,7 +8,6 @@ import { baseUrl } from '../config';
  * @return {Promise<any>}
  */
 const updateLanguagesList = (language) => {
-	console.log('newLanguage', language);
   return new Promise((resolve, reject) => {
 		const params = language;
 		const reqBody = {

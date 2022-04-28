@@ -4,11 +4,11 @@ import { baseUrl } from '../config';
 /**
  * Update language with @param id in DynamoDB.
  *
+ * @param {String} id
  * @param {Object} language
  * @return {Promise<any>}
  */
 const updateLanguages = (id, language) => {
-	console.log('edit language', language);
   return new Promise((resolve, reject) => {
 		const params = language;
 		const reqBody = {
@@ -18,7 +18,7 @@ const updateLanguages = (id, language) => {
 			.put(`${baseUrl}/languages/${id}`, params, reqBody)
 			.then(res => resolve(res.data))
 			.catch(err => reject(JSON.stringify(err)));
-	})
+	});
 };
 
 export default updateLanguages;

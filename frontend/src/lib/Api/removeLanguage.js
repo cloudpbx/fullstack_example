@@ -4,7 +4,7 @@ import { baseUrl } from '../config';
 /**
  * Remove language item with @param id in DynamoDB.
  *
- * @param {Object} language
+ * @param {String} id
  * @return {Promise<any>}
  */
 const removeLanguage = (id) => {

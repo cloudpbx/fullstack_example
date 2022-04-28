@@ -4,7 +4,7 @@ import { Accordion,
 				 AccordionDetails,
 				 AccordionActions,
 				 Button,
-				 Typography, } from '@mui/material';
+				 Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Language = (props) => {
@@ -12,7 +12,7 @@ const Language = (props) => {
 					handleChange,
 					expanded,
 					handleLanguageClick,
-					removeLanguage } = props;
+					removeLanguage, } = props;
 
   return (
     <div>

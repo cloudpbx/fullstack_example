@@ -4,7 +4,6 @@ import { baseUrl } from '../config';
 /**
  * Get a list of languages from DynamoDB
  *
- * @param {Object} language
  * @return {Promise<any>}
  */
 const getLanguagesList = () => {

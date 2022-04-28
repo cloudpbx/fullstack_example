@@ -1,5 +1,8 @@
 import { useEffect, useReducer } from 'react';
-import { get_languages_list, remove_language, update_language, update_languages_list } from '../lib/Api';
+import { get_languages_list,
+				 remove_language,
+				 update_language,
+				 update_languages_list, } from '../lib/Api';
 import { isEmptyString, isValidUrl } from '../helpers/validationHelpers';
 import Language from '../classes/Language';
 
@@ -77,13 +80,12 @@ const useAppData = () => {
 
 	useEffect(() => {
 		get_languages_list().then(data => {
-			console.log('data', data);
 			setLanguages(data);
 			if (!data.length) {
 				update_languages_list(defaultLanguages[0]).then(data => {
 					setLanguages([new Language(data)]);
 				}).catch(err => console.log('update_language_list::err - ', err));
-			}
+			};
 		}).catch(err => console.log('get_language_list::err - ', err));
 	}, []);
 
@@ -116,9 +118,9 @@ const useAppData = () => {
 
 	const saveLanguage = () => {
 		if (state.addNew && languageNamesList.indexOf(state.fields.name.toLowerCase()) !== -1) {
-			setError('The language name is already taken. Please choose another one.');
+			setError('Please choose another name.');
 			return;
-		}
+		};
 		for (const attr in state.fields) {
 			if (stringAttr.includes(attr) && isEmptyString(state.fields[attr])) {
 				setError(`Please fill in the '${attr}' field.`);
