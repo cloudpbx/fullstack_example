@@ -2,7 +2,7 @@
 
 This example demonstrates how to run a service locally, using the
 [serverless-offline](https://github.com/dherault/serverless-offline) plugin. It
-provides a REST API to manage Todos stored in a DynamoDB, similar to the
+provides a REST API to manage Languages stored in a DynamoDB, similar to the
 [aws-node-rest-api-with-dynamodb](https://github.com/serverless/examples/tree/master/aws-node-rest-api-with-dynamodb)
 example. A local DynamoDB instance is provided by the
 [serverless-dynamodb-local](https://github.com/99xt/serverless-dynamodb-local)
@@ -32,7 +32,7 @@ serverless offline start
 
 ## Usage
 
-You can create, retrieve, update, or delete todos with the following commands:
+You can create, retrieve, update, or delete languages with the following commands:
 
 ### Create a Language
 
@@ -42,10 +42,10 @@ curl -X POST -H "Content-Type:application/json" http://localhost:3000/dev/langua
 
 Example Result:
 ```bash
-{"id":"4c3523e0-c67f-11ec-9fe9-8d91c0387302","name":"Javascript","description":"Learn JS","link":"www.google.com","createdAt":1651101058333,"updatedAt":1651101058333}
+{"id":"ff196020-c710-11ec-a538-17e50b4d1a94","name":"Javascript","description":"Learn JS","link":"https://en.wikipedia.org/wiki/JavaScript","createdAt":1651163635490,"updatedAt":1651163635490}
 ```
 
-### List all Todos
+### List all Languages
 
 ```bash
 curl -H "Content-Type:application/json" http://localhost:3000/dev/languages
@@ -53,10 +53,10 @@ curl -H "Content-Type:application/json" http://localhost:3000/dev/languages
 
 Example output:
 ```bash
-[{"id":"4c3523e0-c67f-11ec-9fe9-8d91c0387302","name":"Javascript","description":"Learn JS","link":"https://en.wikipedia.org/wiki/JavaScript","createdAt":1651101058333,"updatedAt":151101058333}]%
+[{"name":"Javascript","link":"https://en.wikipedia.org/wiki/JavaScript","description":"Learn JS","createdAt":1651163635490,"id":"ff196020-c710-11ec-a538-17e50b4d1a94","updatedAt":1651163635490},{"name":"Python","link":"https://en.wikipedia.org/wiki/Python","description":"Learn Python","createdAt":1651163711566,"id":"2c71a6e0-c711-11ec-a1d6-2d2195dcab61","updatedAt":1651163711566}]%
 ```
 
-### Get one Todo
+### Get one Language
 
 ```bash
 # Replace the <id> part with a real id from your languages table
@@ -65,19 +65,31 @@ curl -H "Content-Type:application/json" http://localhost:3000/dev/languages/<id>
 
 Example Result:
 ```bash
-[{"id":"4c3523e0-c67f-11ec-9fe9-8d91c0387302","name":"Javascript","description":"Learn JS","link":"https://en.wikipedia.org/wiki/JavaScript","createdAt":1651101058333,"updatedAt":14551101058333}]%
+{"name":"Javascript","link":"https://en.wikipedia.org/wiki/JavaScript","description":"Learn JS","createdAt":1651163635490,"id":"ff196020-c710-11ec-a538-17e50b4d1a94","updatedAt":1651163635490}%
 ```
 
-### Update a Todo
+### Update a Language
 
 ```bash
-# Replace the <id> part with a real id from your todos table
+# Replace the <id> part with a real id from your languages table
 curl -X PUT -H "Content-Type:application/json" http://localhost:3000/dev/languages/<id> --data '{ "name": "Typescript", "description": "Learn JS", "link": "https://www.typescriptlang.org" }'
 ```
 
 Example Result:
 ```bash
-[{"id":"4c3523e0-c67f-11ec-9fe9-8d91c0387302","name":"Typescript","description":"Learn JS","link":"https://www.typescriptlang.org","createdAt":1651101058333,"updatedAt":1651101099333}]%
+[{"link":"https://www.typescriptlang.org","name":"Typescript","createdAt":1651163635490,"description":"Learn JS","id":"ff196020-c710-11ec-a538-17e50b4d1a94","updatedAt":1651163933940}%]
 ```
 
 No output
+
+### Remove a Language
+
+```bash
+# Replace the <id> part with a real id from your languages table
+curl -X DELETE -H "Content-Type:application/json" http://localhost:3000/dev/languages/<id>
+```
+
+Example Result:
+```bash
+{"link":"https://www.typescriptlang.org","name":"Typescript","createdAt":1651163635490,"description":"Learn JS","id":"ff196020-c710-11ec-a538-17e50b4d1a94","updatedAt":1651163933940}%
+```

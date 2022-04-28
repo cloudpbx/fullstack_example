@@ -7,11 +7,10 @@ export const get: Handler = async (event: APIGatewayEvent, context: Context) => 
     TableName: process.env.DYNAMODB_TABLE as string,
     Key: {
       id: event.pathParameters!.id,
-			AttributesToGet: ["id", "name", "description", "link"],
     },
   };
 
-  // fetch languages from the database
+  // fetch language item from the database
   try {
     const res = await dynamoDb.get(params).promise()
     return successResponse(res.Item)
