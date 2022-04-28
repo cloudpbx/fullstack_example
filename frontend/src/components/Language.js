@@ -66,7 +66,7 @@ const Language = (props) => {
 Language.propTypes = {
 	languages: PropTypes.arrayOf(PropTypes.object).isRequired,
 	handleChange: PropTypes.func.isRequired,
-	expanded: PropTypes.string.isRequired,
+	expanded: PropTypes.string,
 	handleLanguageClick: PropTypes.func.isRequired,
 	removeLanguage: PropTypes.func.isRequired,
 };
