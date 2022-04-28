@@ -2,7 +2,7 @@ import axios from 'axios';
 import { baseUrl } from '../config';
 
 /**
- * Add language to Language table in DynamoDB.
+ * Add language to Languages list in DynamoDB.
  *
  * @param {Object} language
  * @return {Promise<any>}
