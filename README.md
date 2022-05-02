@@ -1,5 +1,23 @@
 # Serverless REST API with DynamoDB and offline support
 
+## Note for edited full stack application
+
+- Created a full-stack application where users can receive randomly generate famous quotes and have them displayed on wall for quotes
+- Users can also create their own quotes
+- Any quote updated or deleted
+- Responsive front end
+
+## How to use
+
+```
+npm install
+sls dynamodb install
+serverless offline start
+cd frontend
+npm install
+npm start
+```
+
 This example demonstrates how to run a service locally, using the
 [serverless-offline](https://github.com/dherault/serverless-offline) plugin. It
 provides a REST API to manage Todos stored in a DynamoDB, similar to the
@@ -41,6 +59,7 @@ curl -X POST -H "Content-Type:application/json" http://localhost:3000/dev/todos 
 ```
 
 Example Result:
+
 ```bash
 {"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":false,"updatedAt":1479138570824}%
 ```
@@ -52,6 +71,7 @@ curl -H "Content-Type:application/json" http://localhost:3000/dev/todos
 ```
 
 Example output:
+
 ```bash
 [{"text":"Deploy my first service","id":"ac90feaa11e6-9ede-afdfa051af86","checked":true,"updatedAt":1479139961304},{"text":"Learn Serverless","id":"206793aa11e6-9ede-afdfa051af86","createdAt":1479139943241,"checked":false,"updatedAt":1479139943241}]%
 ```
@@ -64,6 +84,7 @@ curl -H "Content-Type:application/json" http://localhost:3000/dev/todos/<id>
 ```
 
 Example Result:
+
 ```bash
 {"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":false,"updatedAt":1479138570824}%
 ```
@@ -76,6 +97,7 @@ curl -X PUT -H "Content-Type:application/json" http://localhost:3000/dev/todos/<
 ```
 
 Example Result:
+
 ```bash
 {"text":"Learn Serverless","id":"ee6490d0-aa11e6-9ede-afdfa051af86","createdAt":1479138570824,"checked":true,"updatedAt":1479138570824}%
 ```
