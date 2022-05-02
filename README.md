@@ -2,13 +2,16 @@
 
 ## Note for edited full stack application
 
-- This version uses npm package manager. (both for serverless-backend and frontend)
-- First get the backend running followed by the front end
+- Created a full-stack application where users can receive randomly generate famous quotes and have them displayed on wall for quotes
+- Users can also create their own quotes
+- Any quote updated or deleted
+- Responsive front end
 
 ## How to use
 
 ```
 npm install
+sls dynamodb install
 serverless offline start
 cd frontend
 npm install
