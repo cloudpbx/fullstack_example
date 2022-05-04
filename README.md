@@ -20,6 +20,7 @@ by creating the necessary React components.
 npm i -g serverless@2.72.3
 npm install
 serverless dynamodb install
+serverless dynamodb start
 cd frontend
 npm install
 npm start

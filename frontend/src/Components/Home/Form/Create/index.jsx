@@ -14,11 +14,11 @@ function Create({ setIsAdd, isEdit, setIsEdit }) {
     return (
         <>
             <div className='heading space '>
-                <div className='py-3'>
+                <div className='py-3 w-25'>
                     <h3>Add Task</h3>
-                    <div className=' py-2'>
+                    <div className='py-2'>
                         <Input
-                            className='input'
+                            // className='input'
                             type="text"
                             value={task.title}
                             placeholder="Enter Title"
@@ -26,16 +26,17 @@ function Create({ setIsAdd, isEdit, setIsEdit }) {
                         />
 
                     </div>
-                    <div className=' py-2'>
+                    <div className='py-2'>
                         <Input
-                            className='input'
-                            type="text"
+                            // className='input'
+                            cols="30"
+                            type="textarea"
                             value={task.description}
                             placeholder="Enter Description"
                             onChange={(e) => setTask({ ...task, "description": e.target.value })}
                         />
                     </div>
-                    {isEdit && <div className=' py-2'>
+                    {isEdit && <div className='py-2'>
                         <Input
                             className='input'
                             type="select"
