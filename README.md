@@ -8,6 +8,28 @@ example. A local DynamoDB instance is provided by the
 [serverless-dynamodb-local](https://github.com/99xt/serverless-dynamodb-local)
 plugin.
 
+#Note: For the Task Management Full Stack Application
+
+* Modified the existing full stack application with the Simple Task Management feature 
+by creating the necessary React components. 
+* Kept the layout simple and classic to view the tasks easily 
+* Created necessary CRUD operation and files for backend in the dynamodb 
+
+## New Setup
+```bash
+npm i -g serverless@2.72.3
+npm install
+serverless dynamodb install
+cd frontend
+npm install
+npm start
+```
+
+After running the project successfully, one can run below cmd from root directory
+```bash
+npm start
+```
+
 ## Use-case
 
 Test your service locally, without having to deploy it first.
