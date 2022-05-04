@@ -1,4 +1,4 @@
-*.js
+# *.js
 /.build
 /.dynamodb
 /node_modules
