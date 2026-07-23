@@ -1,0 +1,9 @@
+# overlord.yml — repo metadata consumed by Overlord (https://github.com/clio/overlord).
+# Added as part of MAC-4183 to onboard this repo to the Overlord dashboard.
+# 'classification' and 'tier' are best-guess deductions from the repo contents; please
+# confirm them. Fields marked TODO could not be deduced and must be filled by the owners.
+# Docs: https://github.com/clio/overlord/blob/master/README.md#using-overlord-on-your-repo
+
+classification: meta
+owners:                       # TODO: GitHub username(s) of the repo owner(s)
+  # - your-github-username
