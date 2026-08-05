@@ -1,0 +1,5 @@
+# overlord.yml — repo metadata for Overlord (https://github.com/clio/overlord). Added via MAC-4183.
+classification: meta
+team: corvum
+owners:
+  - uhiku
