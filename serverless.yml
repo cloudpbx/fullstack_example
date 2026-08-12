@@ -6,7 +6,7 @@ plugins:
   - serverless-plugin-typescript
   - serverless-dynamodb-local
   - serverless-offline
-
+  - serverless-python-requirements
 custom:
   dynamodb:
     stages:
@@ -69,6 +69,38 @@ functions:
     events:
       - http:
           path: todos/{id}
+          method: put
+          cors: true
+
+  createTask:
+    handler: tasks/create.createTask
+    events:
+      - http:
+          path: tasks
+          method: post
+          cors: true
+
+  listTasks:
+    handler: tasks/list.listTasks
+    events:
+      - http:
+          path: tasks
+          method: get
+          cors: true
+
+  getTask:
+    handler: tasks/get.getTask
+    events:
+      - http:
+          path: tasks/{id}
+          method: get
+          cors: true
+
+  updateTask:
+    handler: tasks/update.updateTask
+    events:
+      - http:
+          path: tasks/{id}
           method: put
           cors: true
 

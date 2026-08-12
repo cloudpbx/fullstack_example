@@ -1,0 +1,11 @@
+$primary-clr:lavender;
+$default-space : 5rem;
+
+.App {
+    background: $primary-clr;
+    height: 100vh;
+}
+
+.space {
+    padding-top: $default-space;
+}
