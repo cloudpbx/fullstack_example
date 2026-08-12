@@ -63,13 +63,55 @@ functions:
           path: todos/{id}
           method: get
           cors: true
-
   update:
     handler: todos/update.update
     events:
       - http:
           path: todos/{id}
           method: put
+          cors: true
+
+  createQuote:
+      handler: quotes/createQuote.createQuote
+      events:
+        - http:
+            path: quote
+            method: post
+            cors: true
+  generateQuote:
+      handler: quotes/generateQuote.generateQuote
+      events:
+        - http:
+            path: random
+            method: post
+            cors: true
+  listQuotes:
+    handler: quotes/listQuotes.listQuotes
+    events:
+      - http:
+          path: quotes
+          method: get
+          cors: true
+  getQuote:
+    handler: quotes/getQuote.getQuote
+    events:
+      - http:
+          path: quote/{id}
+          method: get
+          cors: true
+  updateQuote:
+    handler: quotes/updateQuote.updateQuote
+    events:
+      - http:
+          path: quote/{id}
+          method: put
+          cors: true
+  deleteQuote:
+    handler: quotes/deleteQuote.deleteQuote
+    events:
+      - http:
+          path: quote/{id}
+          method: delete
           cors: true
 
 resources:
